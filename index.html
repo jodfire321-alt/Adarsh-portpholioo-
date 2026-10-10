@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<meta name="description" content="Adarsh's personal portfolio showcasing web development projects, skills and learning journey.">
+<title>Adarsh | Portfolio</title>
+
+<style>
+:root {
+  --bg: #080b18;
+  --card: #11172a;
+  --text: #f7f8ff;
+  --muted: #a6b0ca;
+  --cyan: #55e6f2;
+  --purple: #a78bfa;
+  --border: rgba(255,255,255,.10);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,11,24,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: white;
+  font-size: 22px;
+  padding: 5px 11px;
+  border-radius: 8px;
+}
+
+section {
+  padding: 85px 0;
+}
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid rgba(85,230,242,.3);
+  border-radius: 30px;
+  color: var(--cyan);
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.description {
+  color: var(--muted);
+  max-width: 550px;
+  margin-bottom: 28px;
+}
+
+.buttons {
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 21px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #071018;
+  background: linear-gradient(100deg, var(--cyan), var(--purple));
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(85,230,242,.15);
+}
+
+.profile {
+  max-width: 330px;
+  width: 100%;
+  justify-self: center;
+  padding: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #18203a, #0d1120);
+  border-radius: 25px;
+  box-shadow: 0 25px 70px rgba(0,0,0,.3);
+  transition: .4s;
+}
+
+.profile:hover {
+  transform: translateY(-7px);
+}
+
+.profile-photo {
+  height: 310px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #172440, #302451);
+}
+
+.avatar {
+  height: 310px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #172440, #302451);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: 900;
+  color: var(--cyan);
+}
+
+.profile h3 {
+  margin-top: 15px;
+  font-size: 22px;
+}
+
+.profile p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status {
+  color: var(--cyan);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(30px, 5vw, 42px);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.card {
+  padding: 27px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(85,230,242,.45);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.skill {
+  text-align: center;
+  padding: 25px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  transition: .3s;
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+  border-color: var(--purple);
+}
+
+.skill .icon {
+  font-size: 34px;
+  margin-bottom: 7px;
+}
+
+.skill h3 {
+  font-size: 15px;
+}
+
+.skill p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  border-color: var(--cyan);
+}
+
+.project-number {
+  color: var(--cyan);
+  font-size: 12px;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.project h3 {
+  margin-bottom: 10px;
+}
+
+.project p {
+  color: var(--muted);
+  font-size: 13px;
+  flex-grow: 1;
+}
+
+.tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 17px 0;
+}
+
+.tags span {
+  padding: 4px 8px;
+  background: rgba(167,139,250,.12);
+  color: #c9b9ff;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.project a {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.goal {
+  text-align: center;
+  padding: 45px 25px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #151b32, #101226);
+}
+
+.goal h2 {
+  font-size: clamp(28px, 5vw, 40px);
+  margin-bottom: 15px;
+}
+
+.goal p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: var(--muted);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.contact-link {
+  display: block;
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0b1020;
+  overflow-wrap: anywhere;
+  transition: .3s;
+}
+
+.contact-link:hover {
+  border-color: var(--cyan);
+}
+
+.contact-link small {
+  display: block;
+  color: var(--muted);
+}
+
+form {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 13px;
+  color: white;
+  background: #090d1b;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: 1px solid var(--cyan);
+}
+
+#formStatus {
+  font-size: 12px;
+  color: var(--cyan);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer a {
+  color: var(--cyan);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 65px 0;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .profile {
+    max-width: 290px;
+  }
+
+  .profile-photo, .avatar {
+    height: 270px;
+  }
+
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    padding: 22px 5%;
+    background: #0b1020;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  section {
+    padding: 65px 0;
+  }
+
+  .grid-2, .projects, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">A<span class="gradient">.</span></a>
+
+    <button class="menu-btn" id="menuBtn"
+      aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div class="hero-content reveal">
+      <span class="badge">✦ WELCOME TO MY PORTFOLIO</span>
+
+      <h1>
+        Hi, I'm <span class="gradient">Adarsh.</span><br>
+        Future <span class="gradient">Developer.</span>
+      </h1>
+
+      <p class="description">
+        I'm a student passionate about technology, creativity
+        and web development. I enjoy learning new skills,
+        building websites and turning ideas into reality.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+
+      <p style="color:var(--muted);font-size:12px;margin-top:22px;">
+        📚 Student &nbsp; • &nbsp; 💻 Technology Enthusiast
+        &nbsp; • &nbsp; 🚀 Lifelong Learner
+      </p>
+    </div>
+
+    <div class="profile reveal">
+      <!-- Upload your own photo as profile.jpg to the repository -->
+      <img src="profile.jpg" alt="Adarsh's profile photo"
+        class="profile-photo" id="profilePhoto">
+
+      <div class="avatar" id="avatar" style="display:none;">A</div>
+
+      <h3>Adarsh</h3>
+      <p>Student | Aspiring Web Developer</p>
+      <div class="status">● Always learning something new</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="container reveal">
+    <h2 class="section-title">About <span class="gradient">Me</span></h2>
+    <p class="subtitle">Get to know me and my journey.</p>
+
+    <div class="grid-2">
+      <article class="card">
+        <h3>👋 Who Am I?</h3>
+        <p>
+          Hello! I'm Adarsh, a student interested in computers,
+          programming and modern technology. I'm exploring web
+          development and learning by creating practical projects.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>🎯 My Mission</h3>
+        <p>
+          My mission is to develop useful digital experiences,
+          improve my technical knowledge and become a skilled
+          developer through regular practice and creativity.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container reveal">
+    <h2 class="section-title">My <span class="gradient">Skills</span></h2>
+    <p class="subtitle">Technologies I'm exploring.</p>
+
+    <div class="skills">
+      <article class="skill">
+        <div class="icon">🌐</div>
+        <h3>HTML5</h3>
+        <p>Web Structure</p>
+      </article>
+
+      <article class="skill">
+        <div class="icon">🎨</div>
+        <h3>CSS3</h3>
+        <p>Web Design</p>
+      </article>
+
+      <article class="skill">
+        <div class="icon">⚡</div>
+        <h3>JavaScript</h3>
+        <p>Interactivity</p>
+      </article>
+
+      <article class="skill">
+        <div class="icon">🐍</div>
+        <h3>Python</h3>
+        <p>Programming</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container reveal">
+    <h2 class="section-title">My <span class="gradient">Projects</span></h2>
+    <p class="subtitle">Things I've been building and learning.</p>
+
+    <div class="projects">
+
+      <article class="project">
+        <div class="project-number">PROJECT 01</div>
+        <h3>🎮 Tic Tac Toe</h3>
+        <p>
+          A browser game concept to practise programming logic,
+          interactive design and JavaScript.
+        </p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://github.com/" target="_blank"
+          rel="noopener noreferrer">Explore on GitHub ↗</a>
+      </article>
+
+      <article class="project">
+        <div class="project-number">PROJECT 02</div>
+        <h3>📚 Learning Website</h3>
+        <p>
+          An educational website concept for making learning
+          resources easier to explore.
+        </p>
+        <div class="tags">
+          <span>Web Design</span><span>Education</span>
+        </div>
+        <a href="https://github.com/" target="_blank"
+          rel="noopener noreferrer">Explore on GitHub ↗</a>
+      </article>
+
+      <article class="project">
+        <div class="project-number">PROJECT 03</div>
+        <h3>✨ Personal Portfolio</h3>
+        <p>
+          A personal website to showcase my skills, interests
+          and progress in web development.
+        </p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>GitHub Pages</span>
+        </div>
+        <a href="#home">You're Here ↗</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container reveal">
+    <div class="goal">
+      <h2>Dream Big. <span class="gradient">Build Bigger.</span></h2>
+      <p>
+        Every expert was once a beginner. I'm learning step by
+        step, creating projects and working towards a future
+        where I can turn creative ideas into reality.
+      </p>
+      <a href="#contact" class="btn btn-primary">Let's Connect ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container reveal">
+    <h2 class="section-title">Get In <span class="gradient">Touch</span></h2>
+    <p class="subtitle">Have an idea? Let's connect.</p>
+
+    <div class="contact-grid">
+
+      <article class="card">
+        <h3>📬 Contact Information</h3>
+        <p>Find me online and explore my work.</p>
+
+        <a class="contact-link" href="https://github.com/"
+          target="_blank" rel="noopener noreferrer">
+          <small>GITHUB</small>
+          <strong>Visit GitHub ↗</strong>
+        </a>
+
+        <a class="contact-link" href="https://www.linkedin.com/"
+          target="_blank" rel="noopener noreferrer">
+          <small>LINKEDIN</small>
+          <strong>Visit LinkedIn ↗</strong>
+        </a>
+
+        <a class="contact-link" href="mailto:">
+          <small>EMAIL</small>
+          <strong>Email link — add your address</strong>
+        </a>
+      </article>
+
+      <article class="card">
+        <h3>✉️ Send a Message</h3>
+        <p>
+          Fill out the form to prepare a message in your
+          email application.
+        </p>
+
+        <form id="contactForm">
+          <label>
+            Your Name
+            <input id="senderName" type="text"
+              placeholder="Enter your name" required>
+          </label>
+
+          <label>
+            Your Email
+            <input id="senderEmail" type="email"
+              placeholder="Enter your email" required>
+          </label>
+
+          <label>
+            Your Message
+            <textarea id="senderMessage"
+              placeholder="Write your message..." required></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-primary">
+            Prepare Email ↗
+          </button>
+
+          <p id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> <a href="#home">Adarsh</a>. All rights reserved.</p>
+    <p>Made with curiosity, creativity and code. ✨</p>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.textContent = open ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Show an initial instead of a missing-photo icon.
+document.getElementById("profilePhoto").addEventListener("error", () => {
+  document.getElementById("profilePhoto").style.display = "none";
+  document.getElementById("avatar").style.display = "flex";
+});
+
+// Reveal sections smoothly as they enter the screen.
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+}
+
+// Email form: GitHub Pages does not process or store form submissions.
+document.getElementById("contactForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("senderName").value.trim();
+  const email = document.getElementById("senderEmail").value.trim();
+  const message = document.getElementById("senderMessage").value.trim();
+  const status = document.getElementById("formStatus");
+
+  if (!name || !email || !message) {
+    status.textContent = "Please complete every field.";
+    return;
+  }
+
+  // Replace this address with your own email address.
+  const recipient = "YOUR_EMAIL@example.com";
+
+  if (recipient === "YOUR_EMAIL@example.com") {
+    status.textContent =
+      "The website owner needs to add a real email address to activate this form.";
+    return;
+  }
+
+  const subject = encodeURIComponent("Portfolio message from " + name);
+  const body = encodeURIComponent(
+    "Name: " + name +
+    "\nEmail: " + email +
+    "\n\nMessage:\n" + message
+  );
+
+  window.location.href =
+    "mailto:" + recipient + "?subject=" + subject + "&body=" + body;
+});
+</script>
+
+</body>
+</html>
